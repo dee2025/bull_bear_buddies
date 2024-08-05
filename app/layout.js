@@ -1,8 +1,8 @@
 import Footer from "@/components/Footer";
+import Navbar from "@/components/Navbar";
 import { Inter } from "next/font/google";
 import NextTopLoader from "nextjs-toploader";
 import "./globals.css";
-import Navbar from "@/components/Navbar";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -26,12 +26,12 @@ export default function RootLayout({ children }) {
           speed={200}
           shadow="0 0 10px #2299DD,0 0 5px #2299DD"
           template='<div class="bar" role="bar"><div class="peg"></div></div> 
-  <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
+          <div class="spinner" role="spinner"><div class="spinner-icon"></div></div>'
           zIndex={1600}
           showAtBottom={false}
         />
         <Navbar />
-        <div className="pt-24 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 h-screen">
+        <div className="pt-20 mx-auto max-w-screen-xl px-4 py-8 sm:px-6 lg:px-8 h-screen">
           {children}
         </div>
 

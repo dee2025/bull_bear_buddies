@@ -1,9 +1,17 @@
+"use client";
 import Link from "next/link";
+import { useState } from "react";
 
 export default function Navbar() {
+  const [sidebarShow, setSidebarShow] = useState(0);
+
+  function updateSidebar() {
+    sidebarShow == 0 ? setSidebarShow(1) : setSidebarShow(0);
+  }
+
   return (
     <>
-      <header className="bg-white dark:bg-gray-900 fixed w-full border-b-[1px] border-teal-100 mb-16">
+      <header className="bg-gray-900 fixed w-full border-b-[1px] border-teal-100 z-50">
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 ">
           <div className="flex h-16 items-center justify-between">
             <div className="md:flex md:items-center md:gap-12">
@@ -44,7 +52,7 @@ export default function Navbar() {
                       Long Term
                     </Link>
                   </li>
-
+                  {/* 
                   <li>
                     <a
                       className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
@@ -52,30 +60,30 @@ export default function Navbar() {
                     >
                       History
                     </a>
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <a
                       className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
                       href="#"
                     >
                       Services
                     </a>
-                  </li>
+                  </li> */}
 
-                  <li>
+                  {/* <li>
                     <a
                       className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
                       href="#"
                     >
                       Projects
                     </a>
-                  </li>
+                  </li> */}
 
                   <li>
                     <a
                       className="text-gray-500 transition hover:text-gray-500/75 dark:text-white dark:hover:text-white/75"
-                      href="#"
+                      href="blogs"
                     >
                       Blog
                     </a>
@@ -104,7 +112,10 @@ export default function Navbar() {
               </div>
 
               <div className="block md:hidden">
-                <button className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75">
+                <button
+                  onClick={updateSidebar}
+                  className="rounded bg-gray-100 p-2 text-gray-600 transition hover:text-gray-600/75 dark:bg-gray-800 dark:text-white dark:hover:text-white/75"
+                >
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="h-5 w-5"
@@ -125,6 +136,108 @@ export default function Navbar() {
           </div>
         </div>
       </header>
+
+      {sidebarShow && (
+        <div className="flex h-screen flex-col w-3/4 justify-between border-e bg-gray-900 absolute z-50">
+          <div className="px-4 py-4">
+            <h1 className="heading grid h-10 !text-sm place-content-center  bg-teal-500 !text-white">
+              Bull Bear Buddies
+            </h1>
+
+            <ul className="mt-6 space-y-1">
+              <li>
+                <Link
+                  href="/"
+                  className="block rounded-lg bg-gray-100 px-4 py-2 text-sm font-medium text-gray-700"
+                >
+                  Home
+                </Link>
+              </li>
+
+              <li>
+                <Link
+                  href="ipo-price"
+                  className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >
+                  IPOs
+                </Link>
+              </li>
+
+              <li>
+                <a
+                  href="#"
+                  className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >
+                  Long Term Stocks
+                </a>
+              </li>
+
+              <li>
+                <Link
+                  href="blogs"
+                  className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                >
+                  Blogs
+                </Link>
+              </li>
+
+              <li>
+                <details className="group [&_summary::-webkit-details-marker]:hidden">
+                  <summary className="flex cursor-pointer items-center justify-between rounded-lg px-4 py-2 text-gray-500 hover:bg-gray-100 hover:text-gray-700">
+                    <span className="text-sm font-medium"> Account </span>
+
+                    <span className="shrink-0 transition duration-300 group-open:-rotate-180">
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        className="h-5 w-5"
+                        viewBox="0 0 20 20"
+                        fill="currentColor"
+                      >
+                        <path
+                          fillRule="evenodd"
+                          d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z"
+                          clipRule="evenodd"
+                        />
+                      </svg>
+                    </span>
+                  </summary>
+
+                  <ul className="mt-2 space-y-1 px-4">
+                    <li>
+                      <a
+                        href="#"
+                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      >
+                        Details
+                      </a>
+                    </li>
+
+                    <li>
+                      <a
+                        href="#"
+                        className="block rounded-lg px-4 py-2 text-sm font-medium text-gray-500 hover:bg-gray-100 hover:text-gray-700"
+                      >
+                        Security
+                      </a>
+                    </li>
+
+                    <li>
+                      <form action="#">
+                        <button
+                          type="submit"
+                          className="w-full rounded-lg px-4 py-2 text-sm font-medium text-gray-500 [text-align:_inherit] hover:bg-gray-100 hover:text-gray-700"
+                        >
+                          Logout
+                        </button>
+                      </form>
+                    </li>
+                  </ul>
+                </details>
+              </li>
+            </ul>
+          </div>
+        </div>
+      )}
     </>
   );
 }

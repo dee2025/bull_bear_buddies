@@ -1,5 +1,6 @@
 // app/page.js
 "use client";
+import Heading from "@/components/Heading";
 import PageLoader from "@/components/PageLoader";
 import { useEffect, useState } from "react";
 
@@ -60,7 +61,7 @@ const Page = () => {
       </div>
       {/* <h1>IPO Data</h1> */}
       <div className="py-8">
-        <h1 className="heading">Upcoming IPO's Gray Market Price</h1>
+        <Heading headingText={"Upcoming IPO's Gray Market Price"} />
         <div className="mt-2  overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
           <table className="min-w-full divide-y-2 divide-gray-200 bg-white text-sm dark:divide-gray-700 dark:bg-gray-900">
             <thead className="text-left">
